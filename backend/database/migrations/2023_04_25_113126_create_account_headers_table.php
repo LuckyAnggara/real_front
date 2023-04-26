@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('header_no');
             $table->string('name');
+            $table->enum('type', ['DEBIT', 'KREDIT']);
             $table->timestamps();
         });
     }

@@ -13,7 +13,7 @@ class AccountDetailSeeder extends Seeder
      */
     public function run(): void
     {
-    DB::table('account_details')->insert([
+        DB::table('account_details')->insert([
             // Assets
             [
                 'header_id' => 1,
@@ -95,7 +95,7 @@ class AccountDetailSeeder extends Seeder
             [
                 'header_id' => 6,
                 'account_no' => '6101',
-                'name' => 'Pendapatan Lain Lain',
+                'name' => 'Pendapatan Sewa Ruko',
                 'currency_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -104,20 +104,12 @@ class AccountDetailSeeder extends Seeder
             [
                 'header_id' => 7,
                 'account_no' => '7101',
-                'name' => 'Beban',
+                'name' => 'Beban Listrik Ruko',
                 'currency_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-            // Income
-            [
-                'header_id' => 8,
-                'account_no' => '8101',
-                'name' => 'Beban Lain Lain',
-                'currency_id' => 1,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
+
         ]);
     }
 }

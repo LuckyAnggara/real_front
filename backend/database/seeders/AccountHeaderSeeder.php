@@ -17,35 +17,38 @@ class AccountHeaderSeeder extends Seeder
             [
                 'header_no' => '1',
                 'name' => 'Aktiva',
+                'type' => 'DEBIT',
             ],
             [
                 'header_no' => '2',
                 'name' => 'Liabilitas',
+                'type' => 'KREDIT',
             ],
             [
                 'header_no' => '3',
                 'name' => 'Ekuitas',
+                'type' => 'KREDIT',
             ],
             [
                 'header_no' => '4',
                 'name' => 'Pendapatan',
+                'type' => 'KREDIT',
             ],
             [
                 'header_no' => '5',
-                'name' => 'Harga Pokok Penjualan',
+                'name' => 'Beban',
+                'type' => 'DEBIT',
             ],
             [
                 'header_no' => '6',
                 'name' => 'Pendapatan Lain-Lain',
+                'type' => 'KREDIT',
             ],
             [
                 'header_no' => '7',
-                'name' => 'Beban',
+                'name' => 'Beban Lain Lain',
+                'type' => 'DEBIT',
             ],
-            [
-                'header_no' => '8',
-                'name' => 'Beban Lain-Lain',
-            ]
         ];
 
         DB::table('account_headers')->insert($headers);

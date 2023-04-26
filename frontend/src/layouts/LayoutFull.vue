@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-100 relative">
+  <div class="bg-gray-100">
     <NavBar @close="show" />
 
     <MenuBar :show-menu="showMenu" />
