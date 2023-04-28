@@ -14,17 +14,16 @@ return new class extends Migration
         Schema::create('account_details', function (Blueprint $table) {
             $table->id();
             $table
-                ->foreignId('header_id')
-                ->constrained('account_headers')
+                ->foreignId('category_id')
+                ->constrained('account_categories')
                 ->onDelete('cascade');
             $table->string('account_no', 20);
             $table->string('name');
             $table->tinyInteger('header')->default(0);
-            $table->tinyInteger('lock')->default(0);
             $table->string('currency_id')->default(1);
             $table->string('tax_id')->nullable();
             $table->timestamps();
-            $table->unique(['account_no', 'header_id']);
+            $table->unique(['account_no', 'category_id']);
         });
     }
 

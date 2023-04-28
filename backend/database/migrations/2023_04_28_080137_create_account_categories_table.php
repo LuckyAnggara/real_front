@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('account_categories', function (Blueprint $table) {
             $table->id();
             $table->string('header_id');
+            $table->string('account_no');
             $table->string('name');
             $table->enum('type', ['DEBIT', 'KREDIT']);
             $table->timestamps();
