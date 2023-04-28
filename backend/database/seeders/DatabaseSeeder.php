@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\AccountSubDetail;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,7 +17,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AccountHeaderSeeder::class,
             CurrencySeeder::class,
+            TaxSeeder::class,
             AccountDetailSeeder::class,
+            AccountSubDetailSeeder::class,
+            JournalSeeder::class
         ]);
     }
 }

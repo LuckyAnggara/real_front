@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('name');
             $table->tinyInteger('lock')->default(0);
             $table->string('currency_id');
+            $table->string('tax_id')->nullable();
             $table->timestamps();
             $table->unique(['account_no', 'detail_id']);
         });

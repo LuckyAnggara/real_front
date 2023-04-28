@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 import HelloWorld from '../components/HelloWorld.vue'
 import Dashboard from '../views/Dashboard.vue'
+import DaftarAkun from '../views/account/DaftarAccount.vue'
 
 const routes = [
   {
@@ -17,7 +18,7 @@ const routes = [
   {
     path: '/daftar-akun',
     name: 'daftar-akun',
-    component: HelloWorld,
+    component: DaftarAkun,
     meta: {
       requiresAuth: false,
       title: 'Daftar Akun',

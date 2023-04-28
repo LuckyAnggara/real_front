@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
@@ -20,7 +21,8 @@ return new class extends Migration {
             $table->string('name');
             $table->tinyInteger('header')->default(0);
             $table->tinyInteger('lock')->default(0);
-             $table->string('currency_id');
+            $table->string('currency_id')->default(1);
+            $table->string('tax_id')->nullable();
             $table->timestamps();
             $table->unique(['account_no', 'header_id']);
         });

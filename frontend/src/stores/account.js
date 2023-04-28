@@ -14,7 +14,7 @@ export const useAccountStore = defineStore('accountStore', {
     async getData(page = '') {
       this.isLoading = true
       try {
-        const response = await axiosIns.get(`/account-detail`)
+        const response = await axiosIns.get(`/account-sub-detail`)
         this.responses = response.data
       } catch (error) {
         alert(error)

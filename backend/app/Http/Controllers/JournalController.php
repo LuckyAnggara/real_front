@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AccountDetail;
+use App\Models\Journal;
 use Illuminate\Http\Request;
 
-class AccountDetailController extends Controller
+class JournalController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return AccountDetail::with(['tax'])->get();
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -26,7 +34,15 @@ class AccountDetailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(AccountDetail $accountDetail)
+    public function show(Journal $journal)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Journal $journal)
     {
         //
     }
@@ -34,7 +50,7 @@ class AccountDetailController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, AccountDetail $accountDetail)
+    public function update(Request $request, Journal $journal)
     {
         //
     }
@@ -42,7 +58,7 @@ class AccountDetailController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(AccountDetail $accountDetail)
+    public function destroy(Journal $journal)
     {
         //
     }

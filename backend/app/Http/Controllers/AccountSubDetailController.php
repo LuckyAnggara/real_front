@@ -12,7 +12,7 @@ class AccountSubDetailController extends Controller
      */
     public function index()
     {
-        return AccountSubDetail::all();
+        return AccountSubDetail::with(['tax', 'detail.header'])->get();
     }
 
     /**
