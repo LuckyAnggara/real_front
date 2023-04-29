@@ -33,7 +33,6 @@ class AccountSubDetail extends Model
 
         return $debit - $kredit;
     }
-
     public function getLockStatusAttribute()
     {
         if (count($this->journal) > 0) {

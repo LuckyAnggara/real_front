@@ -16,43 +16,43 @@ class AccountCategorySeeder extends Seeder
         DB::table('account_categories')->insert([
             [
                 'header_id' => 1,
-                'account_id' => '1-1',
+                'account_no' => '1-1',
                 'name' => 'Kas dan Bank',
                 'type' => 'DEBIT'
             ],
             [
                 'header_id' => 1,
-                'account_id' => '1-2',
+                'account_no' => '1-2',
                 'name' => 'Piutang',
                 'type' => 'DEBIT'
             ],
             [
                 'header_id' => 1,
-                'account_id' => '1-3',
+                'account_no' => '1-3',
                 'name' => 'Persediaan',
                 'type' => 'DEBIT'
             ],
             [
                 'header_id' => 1,
-                'account_id' => '1-4',
+                'account_no' => '1-4',
                 'name' => 'Aktiva Tetap',
                 'type' => 'DEBIT'
             ],
             [
                 'header_id' => 1,
-                'account_id' => '1-5',
+                'account_no' => '1-5',
                 'name' => 'Aktiva Lainnya',
                 'type' => 'DEBIT'
             ],
             [
                 'header_id' => 1,
-                'account_id' => '1-6',
+                'account_no' => '1-6',
                 'name' => 'Depresiasi & Amortisasi',
                 'type' => 'KREDIT'
             ],
             [
                 'header_id' => 1,
-                'account_id' => '1-7',
+                'account_no' => '1-7',
                 'name' => 'Aktiva Lancar Lainnya',
                 'type' => 'DEBIT'
             ],
@@ -61,25 +61,25 @@ class AccountCategorySeeder extends Seeder
         DB::table('account_categories')->insert([
             [
                 'header_id' => 2,
-                'account_id' => '2-1',
-                'name' => 'Hutang',
+                'account_no' => '2-1',
+                'name' => 'Utang',
                 'type' => 'KREDIT'
             ],
             [
                 'header_id' => 2,
-                'account_id' => '2-2',
+                'account_no' => '2-2',
                 'name' => 'Kewajiban Lancar Lainnya',
                 'type' => 'KREDIT'
             ],
             [
                 'header_id' => 2,
-                'account_id' => '2-3',
+                'account_no' => '2-3',
                 'name' => 'Kartu Kredit',
                 'type' => 'KREDIT'
             ],
             [
                 'header_id' => 2,
-                'account_id' => '2-4',
+                'account_no' => '2-4',
                 'name' => 'Kewajiban Jangka Panjang',
                 'type' => 'KREDIT'
             ],
@@ -88,7 +88,7 @@ class AccountCategorySeeder extends Seeder
         DB::table('account_categories')->insert([
             [
                 'header_id' => 3,
-                'account_id' => '3-1',
+                'account_no' => '3-1',
                 'name' => 'Ekuitas',
                 'type' => 'KREDIT'
             ],
@@ -97,7 +97,7 @@ class AccountCategorySeeder extends Seeder
         DB::table('account_categories')->insert([
             [
                 'header_id' => 4,
-                'account_id' => '4-1',
+                'account_no' => '4-1',
                 'name' => 'Pendapatan',
                 'type' => 'KREDIT'
             ],
@@ -106,7 +106,7 @@ class AccountCategorySeeder extends Seeder
         DB::table('account_categories')->insert([
             [
                 'header_id' => 5,
-                'account_id' => '5-1',
+                'account_no' => '5-1',
                 'name' => 'Harga Pokok Penjualan (Cost of Goods)',
                 'type' => 'DEBIT'
             ],
@@ -115,7 +115,7 @@ class AccountCategorySeeder extends Seeder
         DB::table('account_categories')->insert([
             [
                 'header_id' => 6,
-                'account_id' => '6-1',
+                'account_no' => '6-1',
                 'name' => 'Beban',
                 'type' => 'DEBIT'
             ],
@@ -124,7 +124,7 @@ class AccountCategorySeeder extends Seeder
         DB::table('account_categories')->insert([
             [
                 'header_id' => 7,
-                'account_id' => '7-1',
+                'account_no' => '7-1',
                 'name' => 'Pendapatan Lainnya',
                 'type' => 'KREDIT'
             ],
@@ -133,7 +133,7 @@ class AccountCategorySeeder extends Seeder
         DB::table('account_categories')->insert([
             [
                 'header_id' => 8,
-                'account_id' => '8-1',
+                'account_no' => '8-1',
                 'name' => 'Beban Lainnya',
                 'type' => 'DEBIT'
             ],

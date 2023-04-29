@@ -12,7 +12,7 @@ class AccountHeaderController extends Controller
      */
     public function index()
     {
-        return AccountHeader::all();
+        return AccountHeader::with('child')->get();
     }
 
     /**

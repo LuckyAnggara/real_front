@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import axiosIns from '../services/axios'
 
 // ITEM STORE
-export const useAccountStore = defineStore('accountStore', {
+export const useAccountHeader = defineStore('accountHeader', {
   state: () => {
     return {
       responses: {},
@@ -14,7 +14,7 @@ export const useAccountStore = defineStore('accountStore', {
     async getData(page = '') {
       this.isLoading = true
       try {
-        const response = await axiosIns.get(`/account-detail`)
+        const response = await axiosIns.get(`/account-header`)
         this.responses = response.data
       } catch (error) {
         alert(error)

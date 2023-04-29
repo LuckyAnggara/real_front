@@ -9,7 +9,47 @@
               <EllipsisVerticalIcon class="ml-2 w-5 h-5" />
             </NormalButton>
 
-            <DropdownMenu :show="showActionMenu" />
+            <DropdownMenu :show="showActionMenu">
+              <ul class="py-1 font-light text-black dark:text-white">
+                <li>
+                  <a
+                    @click="showCreateModal = true"
+                    class="cursor-pointer py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white dark:hover:text-white flex"
+                  >
+                    <PlusIcon class="w-4 mr-2" />
+                    Buat Akun Baru</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white dark:hover:text-white flex">
+                    <PlusIcon class="w-4 mr-2" />
+                    Buat Jurnal Baru</a
+                  >
+                </li>
+              </ul>
+              <ul class="py-1 font-light text-black dark:text-white">
+                <li>
+                  <a href="#" class="py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white dark:hover:text-white flex">
+                    <Cog8ToothIcon class="w-4 mr-2" />
+                    Pengaturan</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white dark:hover:text-white flex">
+                    <PencilSquareIcon class="w-4 mr-2" />
+                    Atur Saldo Awal</a
+                  >
+                </li>
+              </ul>
+              <ul class="py-1 font-light text-black dark:text-white">
+                <li>
+                  <a href="#" class="py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white dark:hover:text-white flex">
+                    <ArrowDownTrayIcon class="w-4 mr-2" />
+                    Export</a
+                  >
+                </li>
+              </ul>
+            </DropdownMenu>
           </div>
           <small class="mt-4 text-xs">Berdasarkan data tanggal 26 April 2023</small>
         </div>
@@ -27,24 +67,27 @@
                 <th scope="col" class="px-4 py-3 text-end">Saldo (IDR)</th>
               </tr>
             </thead>
-            <tbody class="text-xs">
-              <tr v-for="data in data" :key="data.id" class="border-b uppercase">
+            <tbody class="text-base">
+              <tr v-for="data in data" :key="data.id" class="border-b uppercase" :class="[data.header == true ? 'font-bold' : '']">
                 <th scope="row" class="flex items-center px-4 py-2 text-gray-900 whitespace-nowrap dark:text-white">
                   {{ data.account_no }}
                 </th>
                 <td class="px-4 py-2">
-                  <span v-if="data.lock_status == true"><LockClosedIcon class="h-5 w-5 mr-2" /></span>
-                  <span v-else>-</span>
+                  <!-- <span v-if="data.lock_status == true"><LockClosedIcon class="h-5 w-5 mr-2" /></span>
+                  <span v-else>-</span> -->
                 </td>
                 <td class="px-4 py-2">
                   <span class="bg-primary-100 text-black dark:text-white rounded dark:bg-primary-900 dark:text-primary-300">
-                    {{ data.name }}
+                    <span v-show="data.level == 2" class="mr-1"> - </span>
+                    <span>
+                      {{ data.name }}
+                    </span>
                   </span>
                 </td>
-                <td class="px-4 py-2 text-gray-900 whitespace-nowrap dark:text-white">{{ data.detail.name }}</td>
+                <td class="px-4 py-2 text-gray-900 whitespace-nowrap dark:text-white">{{ data.category.name }}</td>
                 <td class="px-4 py-2 text-gray-900 whitespace-nowrap dark:text-white">{{ data.tax?.name }}</td>
                 <td class="px-4 py-2 text-gray-900 whitespace-nowrap dark:text-white">
-                  <div :class="[showClassBalance(data)]" class="flex justify-end font-bold">
+                  <div :class="[showClassBalance(data)]" class="flex justify-end">
                     {{ IDRCurrency.format(showBalance(data)) }}
                   </div>
                 </td>
@@ -54,22 +97,30 @@
         </div>
       </div>
     </div>
+
+    <Teleport to="body">
+      <!-- use the modal component, pass in the prop -->
+      <CreateModal :show="showCreateModal" @close="showCreateModal = false"> </CreateModal>
+    </Teleport>
   </section>
 </template>
 
 <script setup>
-import { EllipsisVerticalIcon } from '@heroicons/vue/24/outline'
+import { EllipsisVerticalIcon, PlusIcon, Cog8ToothIcon, PencilSquareIcon, ArrowDownTrayIcon } from '@heroicons/vue/24/outline'
+
 import { LockClosedIcon } from '@heroicons/vue/20/solid'
 import NormalButton from '../../../components/buttons/NormalButton.vue'
 import DropdownMenu from '../../../components/DropdownMenu.vue'
+import CreateModal from './CreateModal.vue'
 import { IDRCurrency } from '../../../utilities/formatter'
 
 import { ref } from 'vue'
 
 const showActionMenu = ref(false)
+const showCreateModal = ref(false)
 
 function showBalance(data) {
-  if (data.detail.header.type == 'DEBIT') {
+  if (data.category.type == 'DEBIT') {
     if (data.balance < 0) {
       return data.balance
     } else {
@@ -85,7 +136,7 @@ function showBalance(data) {
 }
 
 function showClassBalance(data) {
-  if (data.detail.header.type == 'DEBIT') {
+  if (data.category.type == 'DEBIT') {
     if (data.balance < 0) {
       return 'text-red-500'
     } else {

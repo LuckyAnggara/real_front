@@ -1,0 +1,26 @@
+[
+    {
+        "account_no": "11001",
+        "name": "Kas"
+    },
+    {
+        "account_no": "11001001",
+        "name": "Kas Kantor"
+    },
+    {
+        "account_no": "11001002",
+        "name": "Kas Toko"
+    },
+    {
+        "account_no": "11002",
+        "name": "Bank"
+    },
+    {
+        "account_no": "11002001",
+        "name": "Bank BCA"
+    },
+    {
+        "account_no": "11002002",
+        "name": "Bank BRI"
+    }
+]

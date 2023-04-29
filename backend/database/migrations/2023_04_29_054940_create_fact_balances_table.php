@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('journals', function (Blueprint $table) {
+        Schema::create('fact_balances', function (Blueprint $table) {
             $table->id();
             $table->string('account_no');
-            $table->unsignedBigInteger('reference_id')->nullable();
-            $table->string('reference_type')->nullable();
-            $table->enum('type', ['DEBIT', 'KREDIT']);
-            $table->double('amount');
-            $table->string('notes')->nullable();
+            $table->double('balance');
             $table->timestamps();
+            $table->index('account_no');
         });
     }
 
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('journals');
+        Schema::dropIfExists('fact_balances');
     }
 };

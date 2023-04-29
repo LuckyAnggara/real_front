@@ -13,19 +13,5 @@ class AccountDetailSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('account_details')->insert([
-            // Assets
-            [
-                'header_id' => 1,
-                'account_no' => '1-1001',
-                'name' => 'Kas',
-                'currency_id' => 1,
-                ''
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-
-
-        ]);
     }
 }

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class AccountCategory extends Model
 {
     use HasFactory;
+
+    public function header()
+    {
+        return $this->hasOne(AccountHeader::class, 'id', 'header_id');
+    }
 }

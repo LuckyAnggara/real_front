@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Journal extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['account_no', 'type', 'amount', 'notes', 'created_at'];
 }

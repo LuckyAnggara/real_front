@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\AccountCategory;
 use App\Models\AccountSubDetail;
 use Illuminate\Database\Seeder;
 
@@ -20,7 +21,12 @@ class DatabaseSeeder extends Seeder
             TaxSeeder::class,
             AccountDetailSeeder::class,
             AccountSubDetailSeeder::class,
-            JournalSeeder::class
+            AccountCategorySeeder::class,
+            AccountLevelOneSeeder::class,
+            AccountLevelTwoSeeder::class,
+            JournalSeeder::class,
+
+            FactBalanceSeeder::class
         ]);
     }
 }
