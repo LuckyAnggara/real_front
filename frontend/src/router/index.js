@@ -3,6 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HelloWorld from '../components/HelloWorld.vue'
 import Dashboard from '../views/Dashboard.vue'
 import DaftarAkun from '../views/account/DaftarAccount.vue'
+import CreateJurnal from '../views/journal/CreateJournal.vue'
 
 const routes = [
   {
@@ -22,6 +23,16 @@ const routes = [
     meta: {
       requiresAuth: false,
       title: 'Daftar Akun',
+      layout: 'layout-content',
+    },
+  },
+  {
+    path: '/jurnal-umum-baru',
+    name: 'jurnal-umum-baru',
+    component: CreateJurnal,
+    meta: {
+      requiresAuth: false,
+      title: 'Jurnal Umum',
       layout: 'layout-content',
     },
   },

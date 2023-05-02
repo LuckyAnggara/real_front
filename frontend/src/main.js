@@ -7,6 +7,7 @@ import axiosIns from './services/axios'
 import vSelect from 'vue-select'
 
 import 'vue-multiselect/dist/vue-multiselect.css'
+import 'vue-search-select/dist/VueSearchSelect.css'
 // import 'vue-select/dist/vue-select.css'
 
 const pinia = createPinia()
