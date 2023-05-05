@@ -2,19 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\BaseController;
 use App\Models\AccountDetail;
 use App\Models\AccountLevelOne;
 use App\Models\AccountLevelTwo;
 use App\Models\FactBalance;
 use Illuminate\Http\Request;
 
-class AccountDetailController extends Controller
+class AccountDetailController extends BaseController
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $perPage = $request->input('limit', 5);
+        $name = $request->input('name');
+
         $accountLevelOne = AccountLevelOne::with('tax', 'category.header')->get();
         $accountLevelTwo = AccountLevelTwo::with('tax', 'category.header')->get();
 
@@ -33,7 +37,19 @@ class AccountDetailController extends Controller
             $value->balance = FactBalance::where('account_no', $value->account_no)->orderBy('created_at', 'desc')->first()->balance ?? 0;
         }
 
-        return $merge;
+        $filtered = $merge->filter(function ($item) use ($name) {
+            // Filter berdasarkan nama
+            if ($name && stripos($item->name, $name) !== false) {
+                return true;
+            }
+            // Filter berdasarkan nomor akun
+            if (strpos($item->account_no, $name) === false) {
+                return false;
+            }
+            return true;
+        });
+
+        return $this->sendResponse($filtered->take($perPage), 'Data fetched');
         // return AccountDetail::with(['tax'])->get();
     }
 
