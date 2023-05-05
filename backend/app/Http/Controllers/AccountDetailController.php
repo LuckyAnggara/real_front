@@ -48,7 +48,9 @@ class AccountDetailController extends BaseController
             }
             return true;
         });
-
+        if ($perPage == 0) {
+            return $this->sendResponse($filtered, 'Data fetched');
+        }
         return $this->sendResponse($filtered->take($perPage), 'Data fetched');
         // return AccountDetail::with(['tax'])->get();
     }

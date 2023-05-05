@@ -7,8 +7,9 @@ export const useAccountStore = defineStore('accountStore', {
     return {
       responses: {},
       isLoading: false,
-      searchState: '',
+      query: '',
       currentLimit: 5,
+      selected: '',
     }
   },
   getters: {
@@ -16,17 +17,18 @@ export const useAccountStore = defineStore('accountStore', {
       return state.responses.data ?? []
     },
     searchQuery(state) {
-      if (state.searchName == '' || null) {
+      if (state.query == '' || null) {
         return ''
       }
-      return '&name=' + state.searchName
+      return '&name=' + state.query
     },
   },
   actions: {
-    async getData() {
+    async getData(query = '') {
+      this.query = query
       this.isLoading = true
       try {
-        const response = await axiosIns.get(`/account-detail?limit=${this.currentLimit}${this.searchState}`)
+        const response = await axiosIns.get(`/account-detail?limit=${this.currentLimit}${this.searchQuery}`)
         this.responses = response.data
       } catch (error) {
         alert(error)
