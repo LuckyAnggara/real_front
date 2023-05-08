@@ -2,14 +2,22 @@ import { defineStore } from 'pinia'
 import axiosIns from '../services/axios'
 
 // ITEM STORE
-export const useAccountStore = defineStore('accountStore', {
+export const useJournalStore = defineStore('journalStore', {
   state: () => {
     return {
       responses: {},
-      isLoading: false,
-      query: '',
-      currentLimit: 5,
-      selected: '',
+      currentData: [
+        {
+          account_no: null,
+          debit: 0,
+          kredit: 0,
+        },
+      ],
+      currentForm: {
+        account_no: null,
+        debit: 0,
+        kredit: 0,
+      },
     }
   },
   getters: {
@@ -24,8 +32,14 @@ export const useAccountStore = defineStore('accountStore', {
     },
   },
   actions: {
-    async getData(query = '', currentLimit = this.currentLimit) {
-      this.currentLimit = currentLimit
+    addData() {
+      this.currentData.push({
+        account_no: null,
+        debit: 0,
+        kredit: 0,
+      })
+    },
+    async getData(query = '') {
       this.query = query
       this.isLoading = true
       try {

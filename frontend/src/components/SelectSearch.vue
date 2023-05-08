@@ -3,21 +3,26 @@
     <div v-show="!showSelected" class="relative w-full">
       <input
         disabled
-        :value="selected?.name"
+        :value="selected?.account_no + ` - ` + selected?.name"
         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
       />
       <button @click="clear()" class="absolute top-0 right-0 p-2.5 text-sm font-medium dark:text-white rounded-r-lg text-black">
         <XMarkIcon class="h-5 w-5" />
-        <span class="sr-only">Search</span>
+        <span class="sr-only">Delete</span>
       </button>
     </div>
 
-    <div v-show="showSelected" @click="open()" class="w-full">
+    <div v-show="showSelected" class="w-full">
       <input
+        @click="open()"
         v-model="query"
         @input="search"
         class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
       />
+      <button class="absolute top-0 right-0 p-2.5 text-sm font-medium dark:text-white rounded-r-lg text-black">
+        <ChevronDownIcon @click="open()" v-if="!show" class="h-5 w-5" />
+        <ChevronUpIcon @click="close()" v-else class="h-5 w-5" />
+      </button>
     </div>
     <div
       v-show="show"
@@ -33,10 +38,10 @@
           <span> Tidak ada data </span>
         </div>
       </div>
-      <div v-else class="flex flex-col w-full">
+      <div v-else class="flex flex-col w-full overflow-auto max-h-60 scroll-smooth will-change-scroll">
         <div v-for="(item, index) in data" :key="index">
           <!-- <div> -->
-          <div @click="selectedOption(item)" :class="classOption(item, index)" :aria-selected="focusedOptionIndex === index">
+          <div @click="selectedOption(item)" :class="classOption(item, index)" :aria-selected="focusedOptionIndex === index" :title="item.name">
             <div class="flex w-full items-center px-2 py-2 pl-2 hover:dark:text-black">
               <div class="w-full items-center flex">
                 <div class="mx-2">
@@ -52,7 +57,7 @@
 </template>
 
 <script setup>
-import { XMarkIcon } from '@heroicons/vue/24/outline'
+import { XMarkIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/vue/24/outline'
 import { computed, nextTick, onMounted, reactive, ref, watch } from 'vue'
 import Loader from '../components/Loader.vue'
 import useDebouncedRef from '../utilities/helper'
@@ -60,7 +65,7 @@ import useDebouncedRef from '../utilities/helper'
 const props = defineProps({
   modelValue: String,
   data: {
-    type: Array,
+    type: Object,
     default: [],
     required: true,
   },
@@ -69,7 +74,13 @@ const props = defineProps({
     default: false,
     required: true,
   },
+  debounceTiming: {
+    type: Number,
+    default: 400,
+  },
 })
+
+const emit = defineEmits(['search'])
 
 const show = ref(false)
 const showSelected = ref(true)
@@ -80,12 +91,19 @@ const focusedOptionIndex = ref(null)
 function clear() {
   showSelected.value = true
   selected.value = null
+  query.value = ''
   open()
+}
+
+function close() {
+  show.value = false
+  query.value = ''
 }
 
 function isChoose() {
   show.value = false
   showSelected.value = false
+  query.value = ''
 }
 
 function selectedOption(value) {
@@ -95,11 +113,8 @@ function selectedOption(value) {
 
 async function open() {
   show.value = true
-  //   await nextTick()
-  //   if (accountStore.items.length < 1) {
-  //     accountStore.getData()
-  //   }
   filter.value = ''
+  query.value = ''
 }
 
 function classOption(id, index) {
@@ -112,9 +127,9 @@ function classOption(id, index) {
   }
 }
 
-const query = useDebouncedRef('', 400)
+const query = useDebouncedRef('', props.debounceTiming)
 
 watch(query, (newQuery) => {
-  accountStore.getData(newQuery)
+  emit('search', newQuery)
 })
 </script>
