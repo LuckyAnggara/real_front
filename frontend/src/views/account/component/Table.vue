@@ -26,12 +26,13 @@
                   >
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white dark:hover:text-white flex"
-                  >
-                    <PlusIcon class="w-4 mr-2" />
-                    Buat Jurnal Baru</a
+                  <router-link to="/jurnal-umum-baru">
+                    <a
+                      class="py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white dark:hover:text-white flex"
+                    >
+                      <PlusIcon class="w-4 mr-2" />
+                      Buat Jurnal Baru</a
+                    ></router-link
                   >
                 </li>
               </ul>

@@ -1,9 +1,6 @@
 <template>
   <button
-    :class="[
-      `bg-${bgColor}-700 hover:bg-${bgColor}-800 dark:bg-${bgColor}-600 dark:hover:bg-${bgColor}-700 focus:ring-${bgColor}-300 dark:focus:ring-${bgColor}-800`,
-    ]"
-    class="hover:scale-105 duration-75 ease-linear text-white inline-flex items-center focus:ring-4 focus:outline-none font-medium rounded-md text-sm px-5 py-2.5 text-center"
+    class="hover:scale-105 duration-75 ease-linear justify-center inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800"
   >
     <slot></slot>
   </button>

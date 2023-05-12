@@ -4,6 +4,7 @@ export default {
     './index.html',
     './src/**/*.{vue,js,ts,jsx,tsx}',
     './node_modules/flowbite/**/*.js',
+    './node_modules/vue-tailwind-datepicker/**/*.js',
   ],
   plugins: [require('flowbite/plugin')],
   darkMode: 'class',

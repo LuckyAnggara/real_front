@@ -10,16 +10,33 @@ export const useAccountStore = defineStore('accountStore', {
     return {
       responses: {},
       isLoading: false,
+      query: '',
+      currentLimit: 5,
+      selected: '',
       isStoreLoading: false,
       isTransactionSuccess: true,
     }
   },
-  getters: {},
+  getters: {
+    items(state) {
+      return state.responses.data ?? []
+    },
+    searchQuery(state) {
+      if (state.query == '' || null) {
+        return ''
+      }
+      return '&name=' + state.query
+    },
+  },
   actions: {
-    async getData(page = '') {
+    async getData(query = '', currentLimit = this.currentLimit) {
+      this.currentLimit = currentLimit
+      this.query = query
       this.isLoading = true
       try {
-        const response = await axiosIns.get(`/account-detail`)
+        const response = await axiosIns.get(
+          `/account-detail?limit=${this.currentLimit}${this.searchQuery}`
+        )
         this.responses = response.data
       } catch (error) {
         alert(error)
