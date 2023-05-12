@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class AccountLevelOne extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['category_id','account_no','name','header','currency_id','tax_id'];
     protected $appends = ['level'];
 
     public function getLevelAttribute()

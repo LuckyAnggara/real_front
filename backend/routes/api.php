@@ -4,6 +4,7 @@ use App\Http\Controllers\AccountDetailController;
 use App\Http\Controllers\AccountHeaderController;
 use App\Http\Controllers\AccountSubDetailController;
 use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\TaxController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/account-header',[AccountHeaderController::class, 'index']);
-Route::get('/account-detail',[AccountDetailController::class, 'index']);
+Route::get('/tax',[TaxController::class, 'index']);
+Route::resource('account-detail', AccountDetailController::class);
 Route::get('/account-sub-detail',[AccountSubDetailController::class, 'index']);
 Route::get('/currency',[CurrencyController::class, 'index']);

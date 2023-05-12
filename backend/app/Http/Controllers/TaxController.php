@@ -12,7 +12,7 @@ class TaxController extends Controller
      */
     public function index()
     {
-        //
+        return Tax::all();
     }
 
     /**
