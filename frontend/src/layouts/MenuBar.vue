@@ -10,18 +10,12 @@
     aria-label="Sidebar"
   >
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
-      <ul class="space-y-2 font-medium">
+      <ul class="space-y-2">
         <li v-for="menu in listMenu" :key="menu.id">
           <router-link :to="{ name: menu.to }">
-            <a
-              class="flex items-center text-black hover:text-white dark:hover:text-black dark:text-white hover:bg-secondary dark:hover:bg-primary rounded-lg p-2"
-            >
+            <a class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
               <component class="h-6 w-6" :is="menu.icon"></component>
-              <span
-                :class="showMenu == false ? 'hidden lg:flex' : ''"
-                class="ml-3 transition-all ease-in-out"
-                >{{ menu.name }}</span
-              >
+              <span :class="showMenu == false ? 'hidden lg:flex' : ''" class="ml-3 transition-all ease-in-out">{{ menu.name }}</span>
             </a>
           </router-link>
         </li>

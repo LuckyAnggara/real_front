@@ -25,8 +25,10 @@
       </button>
     </div>
     <div
+      tabindex="0"
       v-show="show"
-      class="absolute shadow z-40 top-12 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 block w-full py-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+      @mouseleave="close()"
+      class="duration-300 transform-all absolute shadow z-50 top-12 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 block w-full py-3 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
     >
       <div v-if="loadingState">
         <div class="py-2 block">
@@ -87,6 +89,10 @@ const showSelected = ref(true)
 const filter = ref('')
 const selected = ref(null)
 const focusedOptionIndex = ref(null)
+
+function cek() {
+  console.info('aaaaa')
+}
 
 function clear() {
   showSelected.value = true

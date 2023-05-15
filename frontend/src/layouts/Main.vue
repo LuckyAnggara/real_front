@@ -1,8 +1,8 @@
 <template>
-  <div class="p-4 lg:ml-64 sm:ml-16 bg-gray-200 dark:bg-gray-900 transition-all ease-in-out h-fit relative">
+  <div class="p-4 lg:ml-64 sm:ml-16 bg-gray-200 dark:bg-gray-900 transition-all ease-in-out min-h-screen max-h-full relative">
     <transition name="slide-down-fade">
-      <div class="bg-white rounded-md w-full mt-16 relative">
-        <span class="p-4 text-black text-2xl block"> {{ route.meta.title }} </span>
+      <div class="bg-white rounded-md w-full mt-16 relative dark:bg-gray-800 shadow-sm">
+        <span class="p-4 text-2xl block dark:text-white text-gray-900"> {{ route.meta.title }} </span>
       </div>
     </transition>
     <router-view v-slot="{ Component }">

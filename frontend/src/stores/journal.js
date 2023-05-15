@@ -50,5 +50,14 @@ export const useJournalStore = defineStore('journalStore', {
       }
       this.isLoading = false
     },
+    validateData() {
+      for (const item of this.currentData) {
+        if (item.account_no === null) {
+          return false
+        }
+      }
+
+      return true
+    },
   },
 })

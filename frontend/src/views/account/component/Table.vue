@@ -1,6 +1,6 @@
 <template>
   <section class="py-6">
-    <div class="mx-auto">
+    <div class="mx-auto text-gray-900 dark:text-white">
       <div class="relative overflow-hidden bg-white dark:bg-gray-800 rounded-lg">
         <div class="flex flex-col px-4 py-3 justify-end items-end">
           <div class="flex flex-shrink-0 flex-row justify-end">
@@ -10,11 +10,11 @@
             </NormalButton>
 
             <DropdownMenu :show="showActionMenu">
-              <ul class="py-1 font-light text-black dark:text-white">
+              <ul class="py-1 font-light text-black">
                 <li>
                   <a
                     @click="showCreateModal = true"
-                    class="cursor-pointer py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white dark:hover:text-white flex"
+                    class="cursor-pointer py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex"
                   >
                     <PlusIcon class="w-4 mr-2" />
                     Buat Akun Baru</a
@@ -22,30 +22,30 @@
                 </li>
                 <li>
                   <router-link to="/jurnal-umum-baru">
-                    <a class="py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white dark:hover:text-white flex">
+                    <a class="py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex">
                       <PlusIcon class="w-4 mr-2" />
                       Buat Jurnal Baru</a
                     ></router-link
                   >
                 </li>
               </ul>
-              <ul class="py-1 font-light text-black dark:text-white">
+              <ul class="py-1 font-light text-black">
                 <li>
-                  <a href="#" class="py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white dark:hover:text-white flex">
+                  <a href="#" class="py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex">
                     <Cog8ToothIcon class="w-4 mr-2" />
                     Pengaturan</a
                   >
                 </li>
                 <li>
-                  <a href="#" class="py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white dark:hover:text-white flex">
+                  <a href="#" class="py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex">
                     <PencilSquareIcon class="w-4 mr-2" />
                     Atur Saldo Awal</a
                   >
                 </li>
               </ul>
-              <ul class="py-1 font-light text-black dark:text-white">
+              <ul class="py-1 font-light text-black">
                 <li>
-                  <a href="#" class="py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-white dark:hover:text-white flex">
+                  <a href="#" class="py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white flex">
                     <ArrowDownTrayIcon class="w-4 mr-2" />
                     Export</a
                   >
@@ -57,9 +57,9 @@
         </div>
         <div class="overflow-x-auto p-5">
           <table
-            class="w-full text-sm text-left text-gray-500 dark:text-gray-400 sm:table-auto border-collapse dark:border-gray-700 border sm:overflow-hidden overflow-x-auto"
+            class="w-full text-sm text-left text-gray-500 dark:text-gray-400 sm:table-auto border-collapse dark:border-gray-700 sm:overflow-hidden overflow-x-auto"
           >
-            <thead class="text-xs text-white uppercase bg-secondary dark:bg-primary dark:text-black">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 <th scope="col" class="px-4 py-3">Kode Akun</th>
                 <th scope="col" class="px-4 py-3">Lock</th>
@@ -69,9 +69,9 @@
                 <th scope="col" class="px-4 py-3 text-end">Saldo (IDR)</th>
               </tr>
             </thead>
-            <tbody class="text-base">
+            <tbody class="font-medium">
               <tr v-for="data in data" :key="data.id" class="border-b uppercase" :class="[data.header == true ? 'font-bold' : '']">
-                <th scope="row" class="flex items-center px-4 py-2 text-gray-900 whitespace-nowrap dark:text-white">
+                <th scope="row" class="flex items-center px-4 py-2 whitespace-nowrap">
                   {{ data.account_no }}
                 </th>
                 <td class="px-4 py-2">
@@ -79,16 +79,16 @@
                   <span v-else>-</span> -->
                 </td>
                 <td class="px-4 py-2">
-                  <span class="bg-primary-100 text-black dark:text-white rounded dark:bg-primary-900 dark:text-primary-300">
+                  <span class="text-black rounded dark:bg-primary-900">
                     <span v-show="data.level == 2" class="mr-1"> - </span>
                     <span>
                       {{ data.name }}
                     </span>
                   </span>
                 </td>
-                <td class="px-4 py-2 text-gray-900 whitespace-nowrap dark:text-white">{{ data.category.name }}</td>
-                <td class="px-4 py-2 text-gray-900 whitespace-nowrap dark:text-white">{{ data.tax?.name }}</td>
-                <td class="px-4 py-2 text-gray-900 whitespace-nowrap dark:text-white">
+                <td class="px-4 py-2 whitespace-nowrap">{{ data.category.name }}</td>
+                <td class="px-4 py-2 whitespace-nowrap">{{ data.tax?.name }}</td>
+                <td class="px-4 py-2 whitespace-nowrap">
                   <div :class="[showClassBalance(data)]" class="flex justify-end">
                     {{ IDRCurrency.format(showBalance(data)) }}
                   </div>
